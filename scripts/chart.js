@@ -1,4 +1,4 @@
-
+function drawchart(idAttribute, dataFile) {
 
 var margin = {top: 20, right: 50, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
@@ -31,12 +31,12 @@ var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .attr("class", "chart")
-    .attr("id", "apple-stock-chart")
+    .attr("id", idAttribute)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-d3.tsv("data.tsv", function(error, data) {
+d3.tsv(dataFile, function(error, data) {
   if (error) throw error;
 
   data.forEach(function(d) {
@@ -100,3 +100,8 @@ d3.tsv("data.tsv", function(error, data) {
     focus.select("text").text(formatCurrency(d.close));
   }
 });
+
+}
+
+drawchart("apple-stock-chart", "data.tsv");
+drawchart("google-stock-chart","data-2.tsv");

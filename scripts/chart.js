@@ -1,4 +1,4 @@
-function drawchart(idAttribute, dataFile) {
+function drawchart(idAttribute, containerSelector, dataFile) {
 
 var margin = {top: 20, right: 50, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
@@ -27,7 +27,7 @@ var line = d3.svg.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.close); });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select(containerSelector).append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .attr("class", "chart")
@@ -103,5 +103,5 @@ d3.tsv(dataFile, function(error, data) {
 
 }
 
-drawchart("apple-stock-chart", "data.tsv");
-drawchart("google-stock-chart","data-2.tsv");
+drawchart("apple-stock-chart", "#apple-stock-chart-container","data.tsv");
+drawchart("google-stock-chart","#google-stock-chart-container", "data-2.tsv");

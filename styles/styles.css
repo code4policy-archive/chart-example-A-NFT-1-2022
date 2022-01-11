@@ -29,3 +29,8 @@ body {
   fill: none;
   stroke: steelblue;
 }
+
+#google-stock-chart .line {
+  stroke: green;
+}
+
